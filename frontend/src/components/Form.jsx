@@ -5,6 +5,8 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import "../styles/Form.css"
 import LoadingIndicator from "./LoadingIndicator";
 
+import { logIn } from "../utilities";
+
 function Form({ route, method }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -18,10 +20,9 @@ function Form({ route, method }) {
         e.preventDefault();
 
         try {
-            const res = await api.post(route, { username, password })
+            console.log(method, "ROUTE FROM FORM ", route, username, password)
             if (method === "login") {
-                localStorage.setItem(ACCESS_TOKEN, res.data.access);
-                localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+                await logIn(username, password, method, route)
                 navigate("/")
             } else {
                 navigate("/login")

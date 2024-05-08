@@ -4,8 +4,10 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Home from "./pages/Home.jsx"
 import NotFound from "./pages/NotFound"
-import RecipeandFood from "./pages/RecipeandFood.jsx"
+import Recipe from "./pages/Recipe.jsx"
 import Food from "./pages/Food.jsx"
+import Trolley from "./pages/Trolley.jsx"
+import SavedRecipes from "./components/SavedRecipes.jsx"
 import ProtectedRoute from "./components/ProtectedRoute"
 import { getInfo } from "./utilities.jsx";
 
@@ -22,7 +24,6 @@ function RegisterAndLogout() {
 const router = createBrowserRouter([
     {
         path: "/",
-        // loader: getInfo,
         element: <App />,
         children: [
             {
@@ -39,15 +40,23 @@ const router = createBrowserRouter([
             },
             {
                 path: "logout/",
-                element: <Logout />
+                element: <ProtectedRoute element= {<Logout />}/>,
             },
             {
                 path: "register/",
                 element: <RegisterAndLogout />
             },
             {
-                path: "recipeandfood/",
-                element: <RecipeandFood />
+                path: "trolley/",
+                element: <Trolley />
+            },
+            {
+                path: "recipe/",
+                element: <Recipe />
+            },
+            {
+                path: "savedrecipes/:nutrient",
+                element: <SavedRecipes />
             },
             {
                 path: "food/",
@@ -57,6 +66,7 @@ const router = createBrowserRouter([
                 path: "*",
                 element: <NotFound />
             }
+
         ],
     },
 ]);

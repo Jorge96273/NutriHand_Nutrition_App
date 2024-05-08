@@ -28,7 +28,7 @@ class Signup(APIView):
             new_profile.save()
             new_profile.set_password(data.get("password"))
             new_profile.save()
-            # Trolley.objects.create(profile=new_profile)
+            Trolley.objects.create(profile=new_profile)
             token = Token.objects.create(user = new_profile)
             return Response({"profile":new_profile.email,"token":token.key}, status=HTTP_201_CREATED)
         except ValidationError as e:
@@ -40,6 +40,7 @@ class Login(APIView):
         data=request.data.copy()
         data['username']=request.data.get("username", data.get("email"))
         a_user = authenticate(username=data.get("username"),password=data.get("password"))
+        print("A USER ", a_user)
         if a_user:
             login(request,a_user)
             token, created= Token.objects.get_or_create(user = a_user)

@@ -1,38 +1,35 @@
 import React from "react";
 import { Card } from 'react-bootstrap';
 import Carousel from "react-bootstrap/Carousel";
-// import foodpicone from "../assets/foodpicone.jpeg";
-// import foodpic2 from "../assets/foodpicone.jpeg";
-import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import '../styles/Home.css';
+
 
 function Home() {
-    const navigate = useNavigate();
     return (
-        <body className="home">
+        <body className="body">
+        <div className="home">
         <h1>Home</h1>
-            <div>
-                <Carousel>
-                    <Carousel.Item>
-                        <foodpicone text="First slide"/>
-                            <h3>Welcome to NutriHand</h3>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <foodpic2 text="Second slide" />
-                            <h3>Search Recipes?</h3>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                            <h3>Search Foods?</h3>
-                    </Carousel.Item>
-                </Carousel>
-            </div>
-            <div>
-                <Link to="../recipeandfood/" style={{ color: 'blue', textDecoration: 'none', marginRight: '10px', fontSize: '16px', padding: '0px 10px', border: '1px solid blue', borderRadius: '5px' }}>Recipe</Link>
-            </div>
-            <div>
-                <Link to="../food/" style={{ color: 'blue', textDecoration: 'none', marginRight: '10px', fontSize: '16px', padding: '0px 10px', border: '1px solid blue', borderRadius: '5px' }}>food</Link>
-            </div>
-        </body>
+        <div className="carr">
+        <Carousel>
+            <Carousel.Item className="carousel-item">
+                <h3 style={{color: 'gray'}}>Welcome to NutriHand</h3>
+            </Carousel.Item>
+            <Carousel.Item className="carousel-item">
+                <h3 style={{color: 'gray'}}>Search Recipes?</h3>
+            </Carousel.Item>
+            <Carousel.Item className="carousel-item">
+                <h3 style={{color: 'gray'}}>Search Foods?</h3>
+            </Carousel.Item>
+        </Carousel>
+        </div>
+        <nav>
+            <Link to="../recipe/" className="link-button">Recipe</Link>
+            <Link to="../food/" className="link-button">Food</Link>
+            <Link to="../trolley/" className="link-button">Trolley</Link>
+        </nav>
+    </div>
+    </body>
         
     );
 }

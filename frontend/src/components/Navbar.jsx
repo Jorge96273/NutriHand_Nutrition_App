@@ -7,29 +7,30 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { logOut } from "../utilities";
 
+
 function NavBar({ user, setUser }) {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
-                <Navbar.Brand as={Link} to="/">
+                <Navbar.Brand as={Link} to="/" style={{ fontSize: '1.8em', fontWeight: 'bold', color: '#007bff' }}>
                     NutriHand
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
                         className="me-auto my-2 my-lg-0"
-                        style={{ color: 'blue', textDecoration: 'none', fontSize: '16px', padding: '5px 10px', border: '1px solid blue', borderRadius: '5px' }}
+                        style={{ fontSize: '16px', padding: '5px 10px' }}
                         navbarScroll
                     >
                         
-                            <Nav.Link as={Link} to={"/register/"}>
+                        <Nav.Link as={Link} to={"/register/"} style={{ color: 'blue'}}>
                                 Register
                             </Nav.Link>
                             <>
-                                <Nav.Link as={Link} to="/login/">
+                            <Nav.Link as={Link} to="/login/" style={{ color: 'blue' }}>
                                     Login
                                 </Nav.Link>
-                                <Button variant="tertiary" onClick={() => [logOut(), setUser(null)]}>
+                            <Button variant="tertiary" style={{ color: 'blue' }}  onClick={() => [logOut(), setUser(null)]}>
                                     Log Out
                                 </Button>
                             </>
@@ -41,7 +42,7 @@ function NavBar({ user, setUser }) {
                             className="me-2"
                             aria-label="Search"
                         />
-                        <Button variant="outline-success">Search</Button>
+                        <Button variant="outline-success" >Search</Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>
