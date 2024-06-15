@@ -21,5 +21,3 @@ These instructions will get you a copy of the project up and running on your loc
 - Run FrontEnd with  '  npm run dev  '
 - Press Open in Browser 
 
-### Prerequisites
-What things you need to install the software and how to install them:
